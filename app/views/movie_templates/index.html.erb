@@ -33,7 +33,7 @@ form action="/insert_movie_record" method="post">
     <input id="director_id_field" type="text" name="the_director_id">
   </div>
 
-  <button>
+  <button type="submit">
     Create movie
   </button>
 </form>
@@ -89,7 +89,7 @@ form action="/insert_movie_record" method="post">
       
       <% the_director = matching_directors.at(0) %>
 
-           <% if the_director == nil %>
+      <% if the_director == nil %>
         Uh oh! We weren't able to find a director for this movie.
       <% else %>
         <%= the_director.name %>
