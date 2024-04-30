@@ -1,4 +1,56 @@
 class DirectorsController < ApplicationController
+  def update
+    # Get the ID out of params
+    d_id = params.fetch("the_id")
+
+    # Look up the existing record
+    matching_records = Director.where({ :id => d_id })
+    the_director = matching_records.at(0)
+
+    # Overwrite each column with the values from user inputs
+    the_director.name = params.fetch("the_name")
+    the_director.dob = params.fetch("the_dob")
+    the_director.bio = params.fetch("the_bio")
+    the_director.image = params.fetch("the_image")
+
+    # Save
+
+    the_director.save
+
+    # Redirect to the director details page
+    redirect_to("/directors/#{the_director.id}")
+  end
+
+
+  def create
+    # params hash looks like this:
+    # {"the_title"=>"1", "the_year"=>"2", "the_duration"=>"3", "the_description"=>"4", "the_image"=>"5", "the_director_id"=>"6"}
+
+    d = Director.new
+    d.title = params.fetch("the_title")
+    d.year = params.fetch("the_year")
+    d.duration = params.fetch("the_duration")
+    d.description = params.fetch("the_description")
+    d.image = params.fetch("the_image")
+
+    d.save
+    redirect_to("/directors")
+
+    # Retrieve the user's inputs from params
+    # Create a record in the director table
+    # Populate each column with the user input
+    # Save
+    # Redirect the user back to the /directors URL
+  end
+
+  def destroy
+    the_id = params.fetch("an_id")
+    matching_records = Director.where({ :id => the_id })
+    the_director = matching_records.at(0)
+    the_director.destroy
+    redirect_to("/directors")
+  end
+
   def index
     matching_directors = Director.all
     @list_of_directors = matching_directors.order({ :created_at => :desc })

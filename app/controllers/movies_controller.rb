@@ -35,7 +35,9 @@ class MoviesController < ApplicationController
     m.description = params.fetch("the_description")
     m.image = params.fetch("the_image")
     m.director_id = params.fetch("the_director_id")
+
     m.save
+
     redirect_to("/movies")
 
     # Retrieve the user's inputs from params
@@ -58,6 +60,7 @@ class MoviesController < ApplicationController
     @list_of_movies = matching_movies.order({ :created_at => :desc })
     render({ :template => "movie_templates/index" })
   end
+
   def show
     the_id = params.fetch("path_id")
     matching_movies = Movie.where({ :id => the_id })
