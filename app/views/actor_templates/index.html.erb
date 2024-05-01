@@ -2,8 +2,6 @@
   List of all actors
 </h1>
 
-<hr>
-
 <form action="/insert_actor_record" method="post">
   <div>
     <label for="name_box">
@@ -82,18 +80,6 @@
 
     <td>
       <%= an_actor.dob %>
-    </td>
-
-    <td>
-      <% matching_actors = Actor.where({ :id => a_movie.actor_id }) %>
-
-      <% the_actor = matching_actors.at(0) %>
-
-       <% if the_actor.name == nil %>
-        Uh oh! We weren't able to find an actor for this movie.
-      <% else %>
-        <%= the_actor.name %>
-      <% end %>  
     </td>
 
     <td>

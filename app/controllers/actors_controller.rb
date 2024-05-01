@@ -15,7 +15,7 @@ class ActorsController < ApplicationController
 
     # Save
 
-    the_movie.save
+    the_actor.save
 
     # Redirect to the movie details page
     redirect_to("/actors/#{the_actor.id}")

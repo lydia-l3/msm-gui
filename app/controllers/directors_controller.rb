@@ -27,19 +27,20 @@ class DirectorsController < ApplicationController
     # {"the_title"=>"1", "the_year"=>"2", "the_duration"=>"3", "the_description"=>"4", "the_image"=>"5", "the_director_id"=>"6"}
 
     d = Director.new
-    d.title = params.fetch("the_title")
-    d.year = params.fetch("the_year")
-    d.duration = params.fetch("the_duration")
-    d.description = params.fetch("the_description")
+    d.name = params.fetch("the_name")
+    d.dob = params.fetch("the_dob")
+    d.bio = params.fetch("the_bio")
     d.image = params.fetch("the_image")
 
     d.save
+
     redirect_to("/directors")
 
     # Retrieve the user's inputs from params
     # Create a record in the director table
     # Populate each column with the user input
     # Save
+    
     # Redirect the user back to the /directors URL
   end
 
